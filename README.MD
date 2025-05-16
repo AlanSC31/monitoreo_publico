@@ -1,1 +1,1 @@
-pip install ultralytics
+work in progress
