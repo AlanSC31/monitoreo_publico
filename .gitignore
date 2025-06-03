@@ -1,0 +1,7 @@
+# Modelos y pesos
+*.pt
+*.weights
+*.onnx
+
+# Videos mp4 en demos
+src/demos/*.mp4
