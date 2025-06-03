@@ -4,7 +4,7 @@ import numpy as np
 import time
 
 # Cargar modelo
-model = YOLO("yolov8m.pt")
+model = YOLO("/models/yolov8m.pt")
 
 # Cargar source
 cap = cv2.VideoCapture("src/videos/personas_calle_3.mp4")
