@@ -13,7 +13,7 @@ Los scripts se pueden correr de dos maneras: de forma local, viendo en tiempo re
 2. Python 3.13.3^.
 3. Librerías de Python: *ultralytics* y *deep_sort_realtime*.
 
-### Instalación y ejecución.
+#### Instalación y ejecución.
 1. Instalar Python.
 2. Instalar las librerías mencionadas con: `pip install ultralytics` y `pip install deep_sort_realtime`
 3. Navegar en la terminal hasta la carpeta raíz del proyecto y ejecutar el script con: `python [nombre del archivo]`

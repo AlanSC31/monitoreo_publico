@@ -20,14 +20,14 @@ PIXEL_TOLERANCE = 25  # tolerancia para considerar inmóvil
 TIME_THRESHOLD = 10   # segundos para marcar sospechoso
 
 # Cargar video fuente
-cap = cv2.VideoCapture("deteccion_comportamiento.mp4")
+cap = cv2.VideoCapture("personas_calle_3.mp4")
 
 # Obtener propiedades para guardar video
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 fps = cap.get(cv2.CAP_PROP_FPS)
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-out = cv2.VideoWriter('output_monitoreo.mp4', fourcc, fps, (width, height))
+out = cv2.VideoWriter('output_comportamiento.mp4', fourcc, fps, (width, height))
 
 while True:
     ret, frame = cap.read()
@@ -67,7 +67,7 @@ while True:
                 else:
                     duration = current_time - stationary_start_time[track_id]
                     if duration > TIME_THRESHOLD:
-                        label = f'🚨 ID {track_id} sospechoso ({int(duration)}s)'
+                        label = f'{track_id} sospechoso'
                         color = (0, 0, 255)
                         cv2.putText(frame, label, (cx - 50, cy - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
                         cv2.rectangle(frame, (int(l), int(t)), (int(r), int(b)), color, 2)
