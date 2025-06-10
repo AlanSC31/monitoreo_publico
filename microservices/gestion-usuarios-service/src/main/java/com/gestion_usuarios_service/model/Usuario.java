@@ -1,13 +1,17 @@
 package com.gestion_usuarios_service.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Usuario {
     private String nombre;
     @Id
-    private String uid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String password;
     private int rol;
     private boolean status;
 
@@ -15,8 +19,9 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String uid, int rol, boolean status) {
-        this.uid = uid;
+    public Usuario(int id, String nombre, String password, int rol, boolean status) {
+        this.id = id; 
+        this.password = password;
         this.nombre = nombre;
         this.rol = rol;
         this.status = status;
@@ -30,13 +35,19 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public String getUid() {
-        return uid;
+    public int getId() {
+        return id;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getRol() {
