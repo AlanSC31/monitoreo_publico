@@ -4,10 +4,10 @@ import numpy as np
 import time
 
 # Cargar modelo
-model = YOLO("yolov8m.pt")
+model = YOLO("/models/yolov8m.pt")
 
 # Cargar source
-cap = cv2.VideoCapture("src/videos/personas_calle_3.mp4")
+cap = cv2.VideoCapture("http://201.174.12.243:1024/mjpg/video.mjpg")
 
 # Configuracion del grid
 grid_size = (2, 2)

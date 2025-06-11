@@ -6,7 +6,7 @@ from deep_sort_realtime.deepsort_tracker import DeepSort
 from collections import defaultdict
 
 # Cargar modelo 
-model = YOLO("yolov8n.pt") 
+model = YOLO("models/yolov8n.pt") 
 
 # Inicializar el tracker DeepSORT
 tracker = DeepSort(max_age=30)
@@ -20,7 +20,7 @@ PIXEL_TOLERANCE = 25  # tolerancia en desplazamiento para considerar que sigue e
 TIME_THRESHOLD = 10   # segundos que debe estar inmóvil para marcar como sospechoso
 
 # Cargar source
-cap = cv2.VideoCapture("src/videos/personas_calle_3.mp4")  # o ruta a archivo .mp4
+cap = cv2.VideoCapture("src/videos/personas_calle_3.mp4")  
 
 while True:
     ret, frame = cap.read()
@@ -32,7 +32,7 @@ while True:
 
     for box in results.boxes.data:
         x1, y1, x2, y2, conf, cls = box
-        if int(cls) == 0:  # solo clase "person"
+        if int(cls) == 0:  
             detections.append(([int(x1), int(y1), int(x2 - x1), int(y2 - y1)], conf, 'person'))
 
     tracks = tracker.update_tracks(detections, frame=frame)
@@ -62,7 +62,7 @@ while True:
                 else:
                     duration = current_time - stationary_start_time[track_id]
                     if duration > TIME_THRESHOLD:
-                        label = f'🚨 ID {track_id} sospechoso ({int(duration)}s)'
+                        label = f'ID {track_id} sospechoso ({int(duration)}s)'
                         color = (0, 0, 255)
                         cv2.putText(frame, label, (cx - 50, cy - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
                         cv2.rectangle(frame, (int(l), int(t)), (int(w), int(h)), color, 2)
